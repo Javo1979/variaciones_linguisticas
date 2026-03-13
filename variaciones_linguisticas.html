@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Variaciones Lingüísticas de la Lengua</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #4f46e5;
+    --primary-light: #eef2ff;
+    --act1: #0ea5e9;
+    --act1-light: #e0f2fe;
+    --act2: #8b5cf6;
+    --act2-light: #ede9fe;
+    --act3: #10b981;
+    --act3-light: #d1fae5;
+    --act4: #f59e0b;
+    --act4-light: #fef3c7;
+    --act5: #ef4444;
+    --act5-light: #fee2e2;
+    --gray: #64748b;
+    --gray-light: #f8fafc;
+    --text: #1e293b;
+    --border: #e2e8f0;
+    --radius: 14px;
+    --shadow: 0 4px 24px rgba(0,0,0,0.08);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: #f1f5f9;
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #2563eb 100%);
+    color: white;
+    padding: 48px 24px 56px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 6px 18px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-family: 'Merriweather', serif;
+    font-size: clamp(22px, 5vw, 38px);
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 10px;
+    position: relative;
+  }
+  .hero p {
+    font-size: 15px;
+    opacity: 0.88;
+    max-width: 600px;
+    margin: 0 auto 24px;
+    position: relative;
+  }
+  .hero-meta {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  .meta-chip {
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  /* PROGRESS BAR */
+  .progress-bar {
+    background: white;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .prog-step {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    color: var(--gray);
+    background: var(--gray-light);
+    border: 1.5px solid var(--border);
+  }
+  .prog-step:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+  .prog-step.inicio { color: var(--act1); border-color: var(--act1); background: var(--act1-light); }
+  .prog-step.a2 { color: var(--act2); border-color: var(--act2); background: var(--act2-light); }
+  .prog-step.a3 { color: var(--act3); border-color: var(--act3); background: var(--act3-light); }
+  .prog-step.a4 { color: var(--act4); border-color: var(--act4); background: var(--act4-light); }
+  .prog-step.a5 { color: var(--act5); border-color: var(--act5); background: var(--act5-light); }
+
+  /* CONTAINER */
+  .container { max-width: 860px; margin: 0 auto; padding: 32px 16px 64px; }
+
+  /* OBJECTIVE BOX */
+  .objective-box {
+    background: var(--primary-light);
+    border: 1.5px solid #c7d2fe;
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 32px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .objective-box .icon { font-size: 28px; flex-shrink: 0; }
+  .objective-box h3 { font-size: 14px; font-weight: 700; color: var(--primary); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1px; }
+  .objective-box p { font-size: 14px; color: #3730a3; }
+
+  /* ACTIVITY CARD */
+  .activity {
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 28px;
+    overflow: hidden;
+  }
+  .act-header {
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .act-num {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; font-weight: 700;
+    flex-shrink: 0;
+    color: white;
+  }
+  .act-title-block h2 { font-size: 16px; font-weight: 700; margin-bottom: 2px; }
+  .act-title-block .subtitle { font-size: 12px; font-weight: 500; opacity: 0.7; }
+  .act-time {
+    margin-left: auto;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 50px;
+    color: white;
+    flex-shrink: 0;
+  }
+  .act-body { padding: 20px 24px 24px; }
+
+  /* Colors per activity */
+  .c1 .act-header { background: var(--act1-light); }
+  .c1 .act-num { background: var(--act1); }
+  .c1 .act-header h2 { color: var(--act1); }
+  .c1 .act-time { background: var(--act1); }
+  .c1 .btn-primary { background: var(--act1); }
+  .c1 .btn-primary:hover { background: #0284c7; }
+
+  .c2 .act-header { background: var(--act2-light); }
+  .c2 .act-num { background: var(--act2); }
+  .c2 .act-header h2 { color: var(--act2); }
+  .c2 .act-time { background: var(--act2); }
+  .c2 .btn-primary { background: var(--act2); }
+  .c2 .btn-primary:hover { background: #7c3aed; }
+
+  .c3 .act-header { background: var(--act3-light); }
+  .c3 .act-num { background: var(--act3); }
+  .c3 .act-header h2 { color: var(--act3); }
+  .c3 .act-time { background: var(--act3); }
+  .c3 .btn-primary { background: var(--act3); }
+  .c3 .btn-primary:hover { background: #059669; }
+
+  .c4 .act-header { background: var(--act4-light); }
+  .c4 .act-num { background: var(--act4); }
+  .c4 .act-header h2 { color: var(--act4); }
+  .c4 .act-time { background: var(--act4); }
+  .c4 .btn-primary { background: var(--act4); }
+  .c4 .btn-primary:hover { background: #d97706; }
+
+  .c5 .act-header { background: var(--act5-light); }
+  .c5 .act-num { background: var(--act5); }
+  .c5 .act-header h2 { color: var(--act5); }
+  .c5 .act-time { background: var(--act5); }
+  .c5 .btn-primary { background: var(--act5); }
+  .c5 .btn-primary:hover { background: #dc2626; }
+
+  /* ELEMENTS */
+  .question-box {
+    background: #fafbff;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin-bottom: 14px;
+  }
+  .question-box label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+  .question-box .hint {
+    font-size: 12px;
+    color: var(--gray);
+    margin-bottom: 8px;
+    font-style: italic;
+  }
+  textarea, input[type="text"] {
+    width: 100%;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: var(--text);
+    background: white;
+    transition: border-color 0.2s;
+    resize: vertical;
+  }
+  textarea:focus, input[type="text"]:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(79,70,229,0.1);
+  }
+  select {
+    width: 100%;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: var(--text);
+    background: white;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2364748b' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    transition: border-color 0.2s;
+  }
+  select:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(79,70,229,0.1); }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 24px;
+    border-radius: 8px;
+    border: none;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 12px;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.15); }
+
+  .info-box {
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin-bottom: 16px;
+    font-size: 14px;
+  }
+  .info-box.blue { background: #eff6ff; border: 1.5px solid #bfdbfe; color: #1d4ed8; }
+  .info-box.purple { background: var(--act2-light); border: 1.5px solid #c4b5fd; color: #5b21b6; }
+  .info-box.green { background: var(--act3-light); border: 1.5px solid #6ee7b7; color: #065f46; }
+  .info-box.yellow { background: var(--act4-light); border: 1.5px solid #fcd34d; color: #92400e; }
+  .info-box.red { background: var(--act5-light); border: 1.5px solid #fca5a5; color: #991b1b; }
+  .info-box strong { display: block; margin-bottom: 4px; font-weight: 700; }
+
+  /* TABLE */
+  .table-wrap { overflow-x: auto; margin: 16px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th {
+    background: var(--primary);
+    color: white;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 10px 14px; border-bottom: 1px solid var(--border); }
+  tr:nth-child(even) td { background: var(--gray-light); }
+  tr:last-child td { border-bottom: none; }
+
+  /* FEEDBACK */
+  .feedback { display: none; margin-top: 12px; padding: 14px 18px; border-radius: 10px; font-size: 14px; }
+  .feedback.correct { background: #dcfce7; border: 1.5px solid #86efac; color: #166534; }
+  .feedback.incorrect { background: var(--act5-light); border: 1.5px solid #fca5a5; color: #991b1b; }
+  .feedback.info { background: var(--primary-light); border: 1.5px solid #c7d2fe; color: #3730a3; }
+
+  /* RESULT GRID */
+  .result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 16px; }
+  .result-item {
+    border-radius: 10px;
+    padding: 14px;
+    text-align: center;
+    border: 1.5px solid;
+    transition: transform 0.2s;
+  }
+  .result-item:hover { transform: scale(1.02); }
+  .result-item .ri-emoji { font-size: 28px; margin-bottom: 6px; }
+  .result-item .ri-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+  .result-item .ri-value { font-size: 14px; font-weight: 600; }
+
+  /* DICT TABLE */
+  .dict-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+  .dict-row input { margin: 0; }
+
+  /* QUOTE */
+  blockquote {
+    border-left: 4px solid var(--primary);
+    padding: 12px 20px;
+    background: var(--primary-light);
+    border-radius: 0 10px 10px 0;
+    font-style: italic;
+    font-size: 14px;
+    color: #3730a3;
+    margin: 16px 0;
+  }
+
+  /* SECTION DIVIDER */
+  .section-label {
+    text-align: center;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin: 32px 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::before, .section-label::after {
+    content: ""; flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* TIMER BADGE */
+  .phase-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: white;
+    border-radius: 10px;
+    padding: 12px 18px;
+    margin-bottom: 20px;
+    border: 1.5px solid var(--border);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gray);
+  }
+  .phase-header .phase-tag {
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+  }
+
+  /* SCORE */
+  .score-box {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: white;
+    border-radius: var(--radius);
+    padding: 24px;
+    text-align: center;
+    display: none;
+    margin-top: 20px;
+  }
+  .score-box .score-num { font-size: 52px; font-weight: 700; line-height: 1; }
+  .score-box .score-label { font-size: 16px; opacity: 0.85; margin-top: 6px; }
+  .score-box .score-msg { font-size: 13px; opacity: 0.75; margin-top: 8px; }
+
+  /* CORRECT/WRONG indicators for Act2 */
+  .ans-row { margin-bottom: 16px; }
+  .ans-row .ans-label { font-size: 13px; font-weight: 600; margin-bottom: 6px; display: block; color: var(--text); }
+  .ans-row .ans-phrase {
+    background: #f8fafc;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 13px;
+    margin-bottom: 8px;
+    font-style: italic;
+    color: #374151;
+  }
+  .indicator { display: none; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 6px; margin-top: 4px; }
+  .indicator.ok { background: #dcfce7; color: #166534; display: inline-block; }
+  .indicator.fail { background: #fee2e2; color: #991b1b; display: inline-block; }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .dict-row { grid-template-columns: 1fr; }
+    .act-time { display: none; }
+    .hero-meta { gap: 6px; }
+  }
+
+  /* ANCHOR scroll padding */
+  [id] { scroll-margin-top: 80px; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">📚 Lengua y Literatura · EPJA · Modalidad Virtual</div>
+  <h1>Variaciones Lingüísticas<br>de la Lengua</h1>
+  <p>Un viaje por la diversidad del lenguaje ecuatoriano. Actividades interactivas para explorar cómo y por qué hablamos diferente.</p>
+  <div class="hero-meta">
+    <span class="meta-chip">⏱️ 60 minutos</span>
+    <span class="meta-chip">🎯 5 Actividades</span>
+    <span class="meta-chip">🇪🇨 Educación General Básica Superior</span>
+    <span class="meta-chip">💻 Modalidad Virtual</span>
+  </div>
+</div>
+
+<!-- STICKY NAV -->
+<div class="progress-bar">
+  <a href="#act1" class="prog-step inicio">⚡ Inicio · 10 min</a>
+  <a href="#act2" class="prog-step a2">🔍 Actividad 2 · 15 min</a>
+  <a href="#act3" class="prog-step a3">🗺️ Actividad 3 · 15 min</a>
+  <a href="#act4" class="prog-step a4">⚠️ Actividad 4 · 10 min</a>
+  <a href="#act5" class="prog-step a5">✅ Cierre · 10 min</a>
+</div>
+
+<div class="container">
+
+  <!-- OBJECTIVE -->
+  <div class="objective-box">
+    <div class="icon">🎯</div>
+    <div>
+      <h3>Objetivo de la clase</h3>
+      <p>Identificar los tipos de variaciones lingüísticas y reconocer su presencia en el habla cotidiana ecuatoriana, valorando la diversidad del lenguaje como patrimonio cultural.</p>
+    </div>
+  </div>
+
+  <!-- ====== ACTIVIDAD 1 ====== -->
+  <div class="phase-header">
+    <span class="phase-tag" style="background:#0ea5e9">INICIO</span>
+    ⏱️ Minutos 0–10
+  </div>
+  <div class="activity c1" id="act1">
+    <div class="act-header">
+      <div class="act-num">1</div>
+      <div class="act-title-block">
+        <h2>🗣️ "Yo hablo diferente según con quién estoy"</h2>
+        <div class="subtitle">Activación de saberes previos</div>
+      </div>
+      <span class="act-time">⏱️ 10 min</span>
+    </div>
+    <div class="act-body">
+      <div class="info-box blue">
+        <strong>📌 Instrucción</strong>
+        Antes de comenzar el tema, responde las siguientes preguntas desde tu propia experiencia. No hay respuesta incorrecta: ¡escribe como hablas normalmente!
+      </div>
+
+      <div class="question-box">
+        <label>💼 Pregunta 1: ¿Cómo saludarías a tu jefe o supervisor?</label>
+        <p class="hint">Escribe exactamente las palabras que usarías...</p>
+        <input type="text" id="q1a" placeholder="Ej: Buenos días, señor García, ¿en qué le puedo ayudar?">
+      </div>
+
+      <div class="question-box">
+        <label>🤝 Pregunta 2: ¿Cómo saludarías a tu mejor amigo del barrio?</label>
+        <p class="hint">Escribe como realmente le hablarías...</p>
+        <input type="text" id="q1b" placeholder="Ej: ¡Oe, bro! ¿Qué más, man?">
+      </div>
+
+      <button class="btn-primary" onclick="showComparison()">Ver mi comparación →</button>
+
+      <div id="comparison-result" class="feedback info" style="display:none;">
+        <strong>🔍 ¡Excelente observación!</strong>
+        <p style="margin-top:8px;">Mira la diferencia entre tus dos respuestas:</p>
+        <div class="table-wrap" style="margin-top:12px;">
+          <table>
+            <tr><th>Con tu jefe (Registro FORMAL)</th><th>Con tu amigo (Registro INFORMAL)</th></tr>
+            <tr><td id="resp-formal" style="font-style:italic; color:#4f46e5;"></td><td id="resp-informal" style="font-style:italic; color:#0ea5e9;"></td></tr>
+          </table>
+        </div>
+        <p style="margin-top:12px;">➡️ <strong>Usas el mismo idioma, pero lo adaptas.</strong> Esa capacidad de cambiar la forma de hablar según la situación, la región o el grupo social se llama <strong>variación lingüística</strong>. Y lejos de ser un error, ¡es una riqueza!</p>
+      </div>
+
+      <div class="info-box blue" style="margin-top:20px;">
+        <strong>💡 Definición clave</strong>
+        Las <strong>variaciones lingüísticas</strong> son las diferencias que presenta una lengua según factores como: ubicación geográfica 📍, grupo social 👥, y contexto comunicativo 🗣️. Reflejan identidad cultural y enriquecen la diversidad lingüística.
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== ACTIVIDAD 2 ====== -->
+  <div class="phase-header">
+    <span class="phase-tag" style="background:#8b5cf6">DESARROLLO</span>
+    ⏱️ Minutos 10–25
+  </div>
+  <div class="activity c2" id="act2">
+    <div class="act-header">
+      <div class="act-num">2</div>
+      <div class="act-title-block">
+        <h2>🔍 "¿De dónde viene lo que dices?"</h2>
+        <div class="subtitle">Los 4 tipos de variaciones lingüísticas</div>
+      </div>
+      <span class="act-time">⏱️ 15 min</span>
+    </div>
+    <div class="act-body">
+
+      <div class="info-box purple">
+        <strong>📖 Primero, lee y aprende los 4 tipos</strong>
+        Antes de la actividad, repasa la siguiente tabla con los tipos de variaciones.
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <tr><th>Tipo</th><th>¿Qué cambia?</th><th>Ejemplo</th></tr>
+          <tr><td><strong>🔊 Fonética</strong></td><td>La pronunciación de sonidos</td><td>"ehto" por "esto" · "lianta" por "llanta" (Loja)</td></tr>
+          <tr><td><strong>📝 Léxico-semántica</strong></td><td>Las palabras que se usan</td><td>"guagua" (kichwa), "man" (inglés), "chévere"</td></tr>
+          <tr><td><strong>🔤 Morfosintáctica</strong></td><td>La estructura de las frases</td><td>"Vine llegando" en vez de "Acabo de llegar"</td></tr>
+          <tr><td><strong>🤝 Pragmática</strong></td><td>La forma de tratar al otro</td><td>Usar "usted", "tú" o "vos" según el contexto</td></tr>
+        </table>
+      </div>
+
+      <div class="info-box purple" style="margin-top:20px;">
+        <strong>🎯 Ahora, clasifica cada expresión</strong>
+        Lee cada frase y selecciona a qué tipo de variación lingüística pertenece. Luego haz clic en "Verificar respuestas".
+      </div>
+
+      <div class="ans-row">
+        <span class="ans-label">1.</span>
+        <div class="ans-phrase">🌊 Un amigo costeño te dice: <em>"Oye, ve, ¿vamos a <strong>jamas</strong> algo?"</em></div>
+        <select id="sel1">
+          <option value="">— Selecciona el tipo de variación —</option>
+          <option value="fonetica">🔊 Fonética</option>
+          <option value="lexica">📝 Léxico-semántica</option>
+          <option value="morfo">🔤 Morfosintáctica</option>
+          <option value="pragma">🤝 Pragmática</option>
+        </select>
+        <div id="ind1" class="indicator"></div>
+      </div>
+
+      <div class="ans-row">
+        <span class="ans-label">2.</span>
+        <div class="ans-phrase">🏖️ Una persona de la Costa dice: <em>"<strong>Ehto</strong> no está bien"</em> (aspira la "s")</div>
+        <select id="sel2">
+          <option value="">— Selecciona el tipo de variación —</option>
+          <option value="fonetica">🔊 Fonética</option>
+          <option value="lexica">📝 Léxico-semántica</option>
+          <option value="morfo">🔤 Morfosintáctica</option>
+          <option value="pragma">🤝 Pragmática</option>
+        </select>
+        <div id="ind2" class="indicator"></div>
+      </div>
+
+      <div class="ans-row">
+        <span class="ans-label">3.</span>
+        <div class="ans-phrase">👵 Tu abuela dice: <em>"<strong>Vine llegando</strong> del mercado"</em></div>
+        <select id="sel3">
+          <option value="">— Selecciona el tipo de variación —</option>
+          <option value="fonetica">🔊 Fonética</option>
+          <option value="lexica">📝 Léxico-semántica</option>
+          <option value="morfo">🔤 Morfosintáctica</option>
+          <option value="pragma">🤝 Pragmática</option>
+        </select>
+        <div id="ind3" class="indicator"></div>
+      </div>
+
+      <div class="ans-row">
+        <span class="ans-label">4.</span>
+        <div class="ans-phrase">🏢 En el trabajo dices: <em>"Buenos días, <strong>señora directora</strong>"</em>, pero en casa dices: <em>"¡Oe, <strong>mami</strong>!"</em></div>
+        <select id="sel4">
+          <option value="">— Selecciona el tipo de variación —</option>
+          <option value="fonetica">🔊 Fonética</option>
+          <option value="lexica">📝 Léxico-semántica</option>
+          <option value="morfo">🔤 Morfosintáctica</option>
+          <option value="pragma">🤝 Pragmática</option>
+        </select>
+        <div id="ind4" class="indicator"></div>
+      </div>
+
+      <button class="btn-primary" onclick="checkAct2()">Verificar mis respuestas →</button>
+
+      <div id="act2-feedback" class="feedback" style="display:none;"></div>
+    </div>
+  </div>
+
+  <!-- ====== ACTIVIDAD 3 ====== -->
+  <div class="activity c3" id="act3">
+    <div class="act-header">
+      <div class="act-num">3</div>
+      <div class="act-title-block">
+        <h2>🗺️ "El Mapa del Habla Ecuatoriana"</h2>
+        <div class="subtitle">Jergas, regionalismos y palabras kichwa</div>
+      </div>
+      <span class="act-time">⏱️ 15 min</span>
+    </div>
+    <div class="act-body">
+
+      <div class="info-box green">
+        <strong>📍 El español ecuatoriano: una lengua diversa y rica</strong>
+        Ecuador tiene dos grandes variantes regionales con vocabularios muy distintos, además de palabras kichwa que forman parte del habla cotidiana serrana.
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <tr><th>Significado</th><th>🌊 Región Costeña</th><th>🏔️ Región Serrana</th></tr>
+          <tr><td>Comida / comer</td><td>Jama / jamar</td><td>Comida / comer</td></tr>
+          <tr><td>Excelente, bueno</td><td>Chévere</td><td>Bacán / chévere</td></tr>
+          <tr><td>Niño/a</td><td>Pelado/a, chico/a</td><td>Guagua (del kichwa)</td></tr>
+          <tr><td>Frío (exclamación)</td><td>—</td><td>¡Achachay! (kichwa)</td></tr>
+          <tr><td>Sorpresa / susto</td><td>¡Ay!</td><td>¡Chuta!</td></tr>
+          <tr><td>Amigo cercano</td><td>Bróder, man</td><td>Ñaño/a (kichwa)</td></tr>
+          <tr><td>Resaca / malestar</td><td>Chuchaqui</td><td>Chuchaqui (kichwa)</td></tr>
+        </table>
+      </div>
+
+      <div class="info-box green" style="margin-top:20px;">
+        <strong>📝 ¡Construye tu propio diccionario regional!</strong>
+        Escribe 3 palabras o expresiones que uses en tu región o familia que no todo el mundo conoce. Incluye su significado y clasifícalas.
+      </div>
+
+      <div style="background:#f8fafc; border:1.5px solid var(--border); border-radius:10px; padding:16px; margin-bottom:16px;">
+        <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:8px; margin-bottom:10px;">
+          <span style="font-size:12px; font-weight:700; color:var(--gray); text-transform:uppercase;">Palabra / Expresión</span>
+          <span style="font-size:12px; font-weight:700; color:var(--gray); text-transform:uppercase;">Significado</span>
+          <span style="font-size:12px; font-weight:700; color:var(--gray); text-transform:uppercase;">Tipo</span>
+        </div>
+        <div class="dict-row">
+          <input type="text" id="d1w" placeholder="Ej: Achachay">
+          <input type="text" id="d1m" placeholder="Ej: Expresión de frío">
+          <select id="d1t">
+            <option value="">Tipo...</option>
+            <option>Regionalismo serrano</option>
+            <option>Regionalismo costeño</option>
+            <option>Jerga juvenil</option>
+            <option>Jerga profesional</option>
+            <option>Palabra kichwa</option>
+            <option>Anglicismo</option>
+          </select>
+        </div>
+        <div class="dict-row">
+          <input type="text" id="d2w" placeholder="Ej: Full">
+          <input type="text" id="d2m" placeholder="Ej: Muy / mucho">
+          <select id="d2t">
+            <option value="">Tipo...</option>
+            <option>Regionalismo serrano</option>
+            <option>Regionalismo costeño</option>
+            <option>Jerga juvenil</option>
+            <option>Jerga profesional</option>
+            <option>Palabra kichwa</option>
+            <option>Anglicismo</option>
+          </select>
+        </div>
+        <div class="dict-row">
+          <input type="text" id="d3w" placeholder="Tu propia palabra...">
+          <input type="text" id="d3m" placeholder="Su significado...">
+          <select id="d3t">
+            <option value="">Tipo...</option>
+            <option>Regionalismo serrano</option>
+            <option>Regionalismo costeño</option>
+            <option>Jerga juvenil</option>
+            <option>Jerga profesional</option>
+            <option>Palabra kichwa</option>
+            <option>Anglicismo</option>
+          </select>
+        </div>
+      </div>
+
+      <button class="btn-primary" onclick="saveDictionary()">Guardar mi diccionario →</button>
+      <div id="dict-feedback" class="feedback" style="display:none;"></div>
+
+      <blockquote style="margin-top:20px;">
+        "La riqueza de una lengua se mide por su capacidad de adaptación y la diversidad de sus formas de expresión."
+      </blockquote>
+    </div>
+  </div>
+
+  <!-- ====== ACTIVIDAD 4 ====== -->
+  <div class="activity c4" id="act4">
+    <div class="act-header">
+      <div class="act-num">4</div>
+      <div class="act-title-block">
+        <h2>⚠️ "Cuidado con los estereotipos"</h2>
+        <div class="subtitle">Estereotipos lingüísticos y comunicación</div>
+      </div>
+      <span class="act-time">⏱️ 10 min</span>
+    </div>
+    <div class="act-body">
+
+      <div class="info-box yellow">
+        <strong>📖 Lee esta situación con atención</strong>
+      </div>
+
+      <div style="background: #fffbeb; border: 2px solid #fcd34d; border-radius: 12px; padding: 20px; margin-bottom: 20px; font-size: 14px;">
+        <p style="font-size:18px; margin-bottom:10px;">🎭 <strong>Situación:</strong></p>
+        <p><em>Marco es de Loja y dice <strong>"lianta"</strong> en vez de <strong>"llanta"</strong>. Su compañero costeño se burla y le dice: <strong>"¿Así hablan en la Sierra? ¡Qué raro hablas!"</strong></em></p>
+        <p style="margin-top:10px;">¿Qué problema de comunicación hay aquí? ¿Es correcto lo que hace el compañero costeño?</p>
+      </div>
+
+      <div class="question-box">
+        <label>💬 ¿Qué opinas de esta situación? ¿Has vivido o visto algo similar?</label>
+        <p class="hint">Escribe con libertad lo que piensas. Puedes usar entre 2 y 5 oraciones.</p>
+        <textarea id="q4a" rows="4" placeholder="Escribe tu reflexión aquí..."></textarea>
+      </div>
+
+      <div class="question-box">
+        <label>🤔 ¿Cómo crees que se sintió Marco? ¿Qué debería haber hecho su compañero?</label>
+        <textarea id="q4b" rows="3" placeholder="Escribe tu respuesta..."></textarea>
+      </div>
+
+      <button class="btn-primary" onclick="showAct4Reflection()">Ver reflexión del tema →</button>
+
+      <div id="act4-feedback" class="feedback info" style="display:none;">
+        <strong>💡 Reflexión sobre los estereotipos lingüísticos</strong>
+        <ul style="margin-top:10px; padding-left:20px; line-height:2;">
+          <li>Los <strong>estereotipos lingüísticos</strong> generan prejuicios y crean expectativas falsas sobre las personas.</li>
+          <li>Burlarse de la forma de hablar de alguien <strong>limita la comunicación real</strong> y genera barreras.</li>
+          <li>Decir "lianta" en Loja NO es un error: es una <strong>variación diatópica regional</strong> válida.</li>
+          <li>Los medios de comunicación muchas veces <strong>perpetúan estereotipos</strong> que simplifican la realidad.</li>
+          <li>La clave es practicar la <strong>empatía comunicativa</strong>: respetar que cada persona habla desde su historia y cultura.</li>
+        </ul>
+        <p style="margin-top:12px; font-weight:600;">✅ Ninguna variedad del español es mejor o peor que otra. Todas son igualmente válidas.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== ACTIVIDAD 5 ====== -->
+  <div class="phase-header" style="margin-top:8px;">
+    <span class="phase-tag" style="background:#ef4444">CIERRE</span>
+    ⏱️ Minutos 50–60
+  </div>
+  <div class="activity c5" id="act5">
+    <div class="act-header">
+      <div class="act-num">5</div>
+      <div class="act-title-block">
+        <h2>✅ "Lo que aprendí hoy"</h2>
+        <div class="subtitle">Evaluación formativa de cierre</div>
+      </div>
+      <span class="act-time">⏱️ 10 min</span>
+    </div>
+    <div class="act-body">
+
+      <div class="info-box red">
+        <strong>📝 Responde las siguientes preguntas para verificar tu aprendizaje</strong>
+        No es una nota, es para que compruebes lo que aprendiste hoy. ¡Hazlo con honestidad!
+      </div>
+
+      <div class="question-box">
+        <label>Pregunta 1: ¿Cuál de los 4 tipos de variación lingüística aparece cuando alguien dice <em>"vine llegando"</em>?</label>
+        <select id="e1">
+          <option value="">— Elige tu respuesta —</option>
+          <option value="a">🔊 Fonética</option>
+          <option value="b">📝 Léxico-semántica</option>
+          <option value="c">🔤 Morfosintáctica</option>
+          <option value="d">🤝 Pragmática</option>
+        </select>
+      </div>
+
+      <div class="question-box">
+        <label>Pregunta 2: Escribe 1 regionalismo serrano y 1 regionalismo costeño que recuerdes de la clase:</label>
+        <input type="text" id="e2a" placeholder="Regionalismo serrano: Ej: Guagua, achachay, ñaño..." style="margin-bottom:8px;">
+        <input type="text" id="e2b" placeholder="Regionalismo costeño: Ej: Jama, chévere, man...">
+      </div>
+
+      <div class="question-box">
+        <label>Pregunta 3: Completa la frase con tus propias palabras:</label>
+        <p class="hint">"Las variaciones lingüísticas <strong>no son errores</strong>, son..."</p>
+        <input type="text" id="e3" placeholder="Completa la oración...">
+      </div>
+
+      <div class="question-box">
+        <label>Pregunta 4: ¿En qué situación usarías un registro <strong>formal</strong> y en cuál uno <strong>informal</strong>? Da un ejemplo tuyo.</label>
+        <textarea id="e4" rows="3" placeholder="Ej: Usaría registro formal cuando... Usaría registro informal cuando..."></textarea>
+      </div>
+
+      <button class="btn-primary" onclick="evaluateFinal()">Ver mis resultados →</button>
+
+      <div id="final-feedback" class="feedback" style="display:none;"></div>
+
+      <div id="score-box" class="score-box">
+        <div class="score-num" id="score-num">0/4</div>
+        <div class="score-label">Preguntas completadas correctamente</div>
+        <div class="score-msg" id="score-msg"></div>
+      </div>
+
+      <blockquote style="margin-top:24px;">
+        "La lengua no es solo un instrumento de comunicación, sino el vehículo de nuestra cultura y el espejo de nuestra identidad."
+      </blockquote>
+
+      <div class="info-box blue" style="margin-top:16px;">
+        <strong>🌟 Mensaje final</strong>
+        Cada uno de ustedes, al retomar sus estudios, está usando el lenguaje como herramienta de crecimiento. La forma en que hablan — su acento, sus palabras, su manera — es parte valiosa de quiénes son. ¡Eso es una riqueza que nadie les puede quitar!
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="text-align:center; margin-top:40px; color:var(--gray); font-size:12px;">
+    <p>📚 Lengua y Literatura · Educación General Básica Superior · Modalidad Virtual</p>
+    <p style="margin-top:4px;">Actividades basadas en: <em>Variaciones Lingüísticas de la Lengua</em></p>
+  </div>
+
+</div>
+
+<script>
+  // ACT 1
+  function showComparison() {
+    const formal = document.getElementById('q1a').value.trim();
+    const informal = document.getElementById('q1b').value.trim();
+    const box = document.getElementById('comparison-result');
+    document.getElementById('resp-formal').textContent = formal || '(no escribiste nada aún)';
+    document.getElementById('resp-informal').textContent = informal || '(no escribiste nada aún)';
+    box.style.display = 'block';
+    box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // ACT 2
+  const answers2 = { sel1: 'lexica', sel2: 'fonetica', sel3: 'morfo', sel4: 'pragma' };
+  const explanations2 = {
+    sel1: '✅ ¡Correcto! "Jamas" = comer. Es una variación LÉXICO-SEMÁNTICA: un regionalismo costeño.',
+    sel2: '✅ ¡Correcto! La aspiración de la "s" es una variación FONÉTICA: cambia la pronunciación.',
+    sel3: '✅ ¡Correcto! "Vine llegando" es un gerundio abusivo — variación MORFOSINTÁCTICA.',
+    sel4: '✅ ¡Correcto! Cambiar entre "señora directora" y "mami" según el contexto es variación PRAGMÁTICA.'
+  };
+  const wrong2 = {
+    sel1: '❌ No es correcto. "Jamas" es una palabra diferente (regionalismo costeño) → variación LÉXICO-SEMÁNTICA.',
+    sel2: '❌ No es correcto. "Ehto" cambia el sonido de la letra, no la palabra ni la frase → variación FONÉTICA.',
+    sel3: '❌ No es correcto. "Vine llegando" cambia la estructura gramatical de la oración → variación MORFOSINTÁCTICA.',
+    sel4: '❌ No es correcto. Cambiar "usted" por "mami" según con quién hablas → variación PRAGMÁTICA.'
+  };
+
+  function checkAct2() {
+    let correct = 0;
+    ['sel1','sel2','sel3','sel4'].forEach((id, i) => {
+      const val = document.getElementById(id).value;
+      const ind = document.getElementById('ind'+(i+1));
+      if (!val) { ind.className = 'indicator fail'; ind.textContent = '⚠️ Selecciona una opción'; return; }
+      if (val === answers2[id]) {
+        correct++;
+        ind.className = 'indicator ok';
+        ind.textContent = explanations2[id];
+      } else {
+        ind.className = 'indicator fail';
+        ind.textContent = wrong2[id];
+      }
+    });
+    const fb = document.getElementById('act2-feedback');
+    fb.style.display = 'block';
+    if (correct === 4) {
+      fb.className = 'feedback correct';
+      fb.innerHTML = '<strong>🎉 ¡Perfecto! Acertaste las 4 respuestas.</strong> Dominas los tipos de variaciones lingüísticas.';
+    } else if (correct >= 2) {
+      fb.className = 'feedback info';
+      fb.innerHTML = `<strong>👍 Bien: ${correct}/4 correctas.</strong> Revisa los indicadores en rojo para reforzar los tipos que aún confundes.`;
+    } else {
+      fb.className = 'feedback incorrect';
+      fb.innerHTML = `<strong>📖 Necesitas repasar: ${correct}/4 correctas.</strong> Lee nuevamente la tabla de tipos y vuelve a intentarlo.`;
+    }
+    fb.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // ACT 3
+  function saveDictionary() {
+    const entries = [];
+    for (let i = 1; i <= 3; i++) {
+      const w = document.getElementById('d'+i+'w').value.trim();
+      const m = document.getElementById('d'+i+'m').value.trim();
+      const t = document.getElementById('d'+i+'t').value;
+      if (w && m) entries.push({ w, m, t: t || 'Sin clasificar' });
+    }
+    const fb = document.getElementById('dict-feedback');
+    fb.style.display = 'block';
+    if (entries.length === 0) {
+      fb.className = 'feedback incorrect';
+      fb.innerHTML = '<strong>⚠️ Escribe al menos una palabra y su significado.</strong>';
+      return;
+    }
+    let html = '<strong>📚 ¡Tu diccionario regional está guardado!</strong><div class="table-wrap" style="margin-top:12px;"><table><tr><th>Palabra</th><th>Significado</th><th>Tipo</th></tr>';
+    entries.forEach(e => { html += `<tr><td><strong>${e.w}</strong></td><td>${e.m}</td><td>${e.t}</td></tr>`; });
+    html += '</table></div><p style="margin-top:10px;">🎉 Estas palabras son evidencia viva de la <strong>variación lingüística ecuatoriana</strong>. ¡Cada expresión cuenta una historia cultural!</p>';
+    fb.className = 'feedback correct';
+    fb.innerHTML = html;
+    fb.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // ACT 4
+  function showAct4Reflection() {
+    const r1 = document.getElementById('q4a').value.trim();
+    const r2 = document.getElementById('q4b').value.trim();
+    const fb = document.getElementById('act4-feedback');
+    if (!r1 && !r2) {
+      fb.style.display = 'block';
+      fb.className = 'feedback incorrect';
+      fb.innerHTML = '<strong>⚠️ Escribe primero tu reflexión antes de ver la respuesta.</strong>';
+      return;
+    }
+    fb.style.display = 'block';
+    fb.className = 'feedback info';
+    fb.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // ACT 5 FINAL
+  function evaluateFinal() {
+    let score = 0;
+    let feedback = '';
+
+    // Q1
+    const e1 = document.getElementById('e1').value;
+    if (e1 === 'c') {
+      score++;
+      feedback += '<p>✅ <strong>Pregunta 1:</strong> ¡Correcto! "Vine llegando" es una variación <strong>morfosintáctica</strong> (gerundio abusivo).</p>';
+    } else if (!e1) {
+      feedback += '<p>⚠️ <strong>Pregunta 1:</strong> No seleccionaste respuesta. La correcta era: <strong>Morfosintáctica</strong>.</p>';
+    } else {
+      feedback += '<p>❌ <strong>Pregunta 1:</strong> La respuesta correcta es <strong>Morfosintáctica</strong>. "Vine llegando" usa un gerundio abusivo que cambia la estructura de la frase.</p>';
+    }
+
+    // Q2
+    const e2a = document.getElementById('e2a').value.trim();
+    const e2b = document.getElementById('e2b').value.trim();
+    if (e2a && e2b) {
+      score++;
+      feedback += `<p>✅ <strong>Pregunta 2:</strong> ¡Bien! Recordaste: "<em>${e2a}</em>" (serrano) y "<em>${e2b}</em>" (costeño).</p>`;
+    } else {
+      feedback += '<p>⚠️ <strong>Pregunta 2:</strong> Recuerda: serranos → guagua, achachay, ñaño | costeños → jama, chévere, man.</p>';
+    }
+
+    // Q3
+    const e3 = document.getElementById('e3').value.trim();
+    if (e3.length > 5) {
+      score++;
+      feedback += `<p>✅ <strong>Pregunta 3:</strong> ¡Excelente reflexión! Completaste: "…<em>${e3}</em>". La diversidad lingüística enriquece nuestra cultura.</p>`;
+    } else {
+      feedback += '<p>⚠️ <strong>Pregunta 3:</strong> Intenta completar con más detalle. Las variaciones son: una riqueza cultural, reflejo de nuestra identidad, patrimonio lingüístico...</p>';
+    }
+
+    // Q4
+    const e4 = document.getElementById('e4').value.trim();
+    if (e4.length > 10) {
+      score++;
+      feedback += '<p>✅ <strong>Pregunta 4:</strong> ¡Muy bien! Demostraste que entiendes la diferencia entre registro formal e informal según el contexto.</p>';
+    } else {
+      feedback += '<p>⚠️ <strong>Pregunta 4:</strong> Escribe un ejemplo propio. Ej: formal = con el jefe o en una entrevista. Informal = con amigos o familia.</p>';
+    }
+
+    const fb = document.getElementById('final-feedback');
+    fb.style.display = 'block';
+    fb.className = score >= 3 ? 'feedback correct' : score >= 2 ? 'feedback info' : 'feedback incorrect';
+    fb.innerHTML = feedback;
+
+    const sb = document.getElementById('score-box');
+    sb.style.display = 'block';
+    document.getElementById('score-num').textContent = score + '/4';
+    const msgs = [
+      'Sigue repasando el material, ¡ya casi lo tienes! 💪',
+      'Buen inicio, repasa los puntos marcados. 📖',
+      '¡Muy buen trabajo! Sigue así. 👏',
+      '¡Felicitaciones! Dominaste todos los conceptos de hoy. 🎉'
+    ];
+    document.getElementById('score-msg').textContent = msgs[score] || msgs[3];
+    sb.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+</script>
+</body>
+</html>
